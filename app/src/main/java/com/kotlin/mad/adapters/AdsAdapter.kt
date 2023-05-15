@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.mad.R
 import com.kotlin.mad.models.AdsModel
 
-class AdsAdapter(private val paymentList: ArrayList<AdsModel>) :
+class AdsAdapter(private val userList: ArrayList<AdsModel>) :
     RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
@@ -27,17 +27,17 @@ class AdsAdapter(private val paymentList: ArrayList<AdsModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentEmp = paymentList[position]
-        holder.tvPTitle.text = currentEmp.pTitle
+        val currentEmp = userList[position]
+        holder.tvUName.text = currentEmp.uName
     }
 
     override fun getItemCount(): Int {
-        return paymentList.size
+        return userList.size
     }
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
-        val tvPTitle : TextView = itemView.findViewById(R.id.tvPTitle)
+        val tvUName : TextView = itemView.findViewById(R.id.tvUName)
 
         init {
             itemView.setOnClickListener {

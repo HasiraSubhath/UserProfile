@@ -6,7 +6,7 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/etPTitle"
+        android:id="@+id/etUName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -15,7 +15,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etPDesc"
+        android:id="@+id/etUAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -26,7 +26,7 @@
         android:inputType="textPersonName"/>
 
     <EditText
-        android:id="@+id/etPMdate"
+        android:id="@+id/etUNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -37,7 +37,7 @@
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/etPEdate"
+        android:id="@+id/etUEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -49,7 +49,7 @@
         />
 
     <EditText
-        android:id="@+id/etPPrice"
+        android:id="@+id/etUNic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

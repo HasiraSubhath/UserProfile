@@ -16,7 +16,7 @@ class AdsFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var paymentList: ArrayList<AdsModel>
+    private lateinit var userList: ArrayList<AdsModel>
     private lateinit var dbRef: DatabaseReference
 
 
@@ -29,29 +29,29 @@ class AdsFetchingActivity : AppCompatActivity() {
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        paymentList = arrayListOf<AdsModel>()
+        userList = arrayListOf<AdsModel>()
 
-        getAdsData()
+        getUserData()
 
 
     }
 
-    private fun getAdsData() {
+    private fun getUserData() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("AdsDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("UserDB")
 
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-               paymentList.clear()
+               userList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
                         val paymentData = empSnap.getValue(AdsModel::class.java)
-                        paymentList.add(paymentData!!)
+                        userList.add(paymentData!!)
                     }
-                    val mAdapter = AdsAdapter(paymentList)
+                    val mAdapter = AdsAdapter(userList)
                     empRecyclerView.adapter = mAdapter
 
                     mAdapter.setOnItemClickListener(object : AdsAdapter.onItemClickListener{
@@ -60,12 +60,12 @@ class AdsFetchingActivity : AppCompatActivity() {
                             val intent = Intent(this@AdsFetchingActivity, AdsDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
-                            intent.putExtra("pId", paymentList[position].pId)
-                            intent.putExtra("pTitle", paymentList[position].pTitle)
-                            intent.putExtra("pDesc", paymentList[position].pDesc)
-                            intent.putExtra("pMdate", paymentList[position].pMdate)
-                            intent.putExtra("pEdate", paymentList[position].pEdate)
-                            intent.putExtra("pPrice", paymentList[position].pPrice)
+                            intent.putExtra("uId", userList[position].uId)
+                            intent.putExtra("uName", userList[position].uName)
+                            intent.putExtra("uAddress", userList[position].uAddress)
+                            intent.putExtra("uNumber", userList[position].uNumber)
+                            intent.putExtra("uEmail", userList[position].uEmail)
+                            intent.putExtra("uNic", userList[position].uNic)
                             startActivity(intent)
                         }
 

@@ -14,12 +14,12 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AdsDetailsActivity : AppCompatActivity() {
 
-    private lateinit var tvPId: TextView
-    private lateinit var tvPTitle: TextView
-    private lateinit var tvPDesc: TextView
-    private lateinit var tvPMdate: TextView
-    private lateinit var tvPEdate: TextView
-    private lateinit var tvPPrice: TextView
+    private lateinit var tvUId: TextView
+    private lateinit var tvUName: TextView
+    private lateinit var tvUAddress: TextView
+    private lateinit var tvUNumber: TextView
+    private lateinit var tvUEmail: TextView
+    private lateinit var tvUNic: TextView
 
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
@@ -34,14 +34,14 @@ class AdsDetailsActivity : AppCompatActivity() {
 
         btnUpdate.setOnClickListener {
             openUpdateDialog(
-                intent.getStringExtra("pId").toString(),
-                intent.getStringExtra("pTitle").toString()
+                intent.getStringExtra("uId").toString(),
+                intent.getStringExtra("uName").toString()
             )
         }
 
         btnDelete.setOnClickListener {
             deleteRecord(
-                intent.getStringExtra("pId").toString()
+                intent.getStringExtra("uId").toString()
             )
         }
 
@@ -50,7 +50,7 @@ class AdsDetailsActivity : AppCompatActivity() {
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("AdsDB").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("UserDB").child(id)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
@@ -69,12 +69,12 @@ class AdsDetailsActivity : AppCompatActivity() {
 
 
     private fun initView() {
-        tvPId = findViewById(R.id.tvPId)
-        tvPTitle = findViewById(R.id.tvPTitle)
-        tvPDesc = findViewById(R.id.tvPDesc)
-        tvPMdate = findViewById(R.id.tvPMdate)
-        tvPEdate = findViewById(R.id.tvPEdate)
-        tvPPrice = findViewById(R.id.tvPPrice)
+        tvUId = findViewById(R.id.tvUId)
+        tvUName = findViewById(R.id.tvUName)
+        tvUAddress = findViewById(R.id.tvUAddress)
+        tvUNumber = findViewById(R.id.tvUNumber)
+        tvUEmail = findViewById(R.id.tvUEmail)
+        tvUNic = findViewById(R.id.tvUNic)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -82,18 +82,18 @@ class AdsDetailsActivity : AppCompatActivity() {
 
     private fun setValuesToViews() {
         //passing data
-        tvPId.text = intent.getStringExtra("pId")
-        tvPTitle.text = intent.getStringExtra("pTitle")
-        tvPDesc.text = intent.getStringExtra("pDesc")
-        tvPMdate.text = intent.getStringExtra("pMdate")
-        tvPEdate.text = intent.getStringExtra("pEdate")
-        tvPPrice.text = intent.getStringExtra("pPrice")
+        tvUId.text = intent.getStringExtra("uId")
+        tvUName.text = intent.getStringExtra("uName")
+        tvUAddress.text = intent.getStringExtra("uAddress")
+        tvUNumber.text = intent.getStringExtra("uNumber")
+        tvUEmail.text = intent.getStringExtra("uEmail")
+        tvUNic.text = intent.getStringExtra("uNic")
 
     }
 
     private fun openUpdateDialog(
-        pId: String,
-        pTitle: String
+        uId: String,
+        uName: String
 
     ) {
         val mDialog = AlertDialog.Builder(this)
@@ -102,45 +102,45 @@ class AdsDetailsActivity : AppCompatActivity() {
 
         mDialog.setView(mDialogView)
 
-        val etPTitle = mDialogView.findViewById<EditText>(R.id.etPTitle)
-        val etPDesc = mDialogView.findViewById<EditText>(R.id.etPDesc)
-        val etPMdate = mDialogView.findViewById<EditText>(R.id.etPMdate)
-        val etPEdate = mDialogView.findViewById<EditText>(R.id.etPEdate)
-        val etPPrice = mDialogView.findViewById<EditText>(R.id.etPPrice)
+        val etUName = mDialogView.findViewById<EditText>(R.id.etUName)
+        val etUAddress = mDialogView.findViewById<EditText>(R.id.etUAddress)
+        val etUNumber = mDialogView.findViewById<EditText>(R.id.etUNumber)
+        val etUEmail = mDialogView.findViewById<EditText>(R.id.etUEmail)
+        val etUNic = mDialogView.findViewById<EditText>(R.id.etUNic)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         //update
-        etPTitle.setText(intent.getStringExtra("pTitle").toString())
-        etPDesc.setText(intent.getStringExtra("pDesc").toString())
-        etPMdate.setText(intent.getStringExtra("pMdate").toString())
-        etPEdate.setText(intent.getStringExtra("pEdate").toString())
-        etPPrice.setText(intent.getStringExtra("pPrice").toString())
+        etUName.setText(intent.getStringExtra("uName").toString())
+        etUAddress.setText(intent.getStringExtra("uAddress").toString())
+        etUNumber.setText(intent.getStringExtra("uNumber").toString())
+        etUEmail.setText(intent.getStringExtra("uEmail").toString())
+        etUNic.setText(intent.getStringExtra("uNic").toString())
 
-        mDialog.setTitle("Updating $pTitle Record")
+        mDialog.setTitle("Updating $uName Record")
 
         val alertDialog = mDialog.create()
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
-            updateAdsData(
-                pId,
-                etPTitle.text.toString(),
-                etPDesc.text.toString(),
-                etPMdate.text.toString(),
-                etPEdate.text.toString(),
-                etPPrice.text.toString()
+            updateUserData(
+                uId,
+                etUName.text.toString(),
+                etUAddress.text.toString(),
+                etUNumber.text.toString(),
+                etUEmail.text.toString(),
+                etUNic.text.toString()
 
             )
 
             Toast.makeText(applicationContext, " Data Updated", Toast.LENGTH_LONG).show()
 
             //we are setting updated data to our text views
-            tvPTitle.text = etPTitle.text.toString()
-            tvPDesc.text = etPDesc.text.toString()
-            tvPMdate.text = etPMdate.text.toString()
-            tvPEdate.text = etPEdate.text.toString()
-            tvPPrice.text = etPPrice.text.toString()
+            tvUName.text = etUName.text.toString()
+            tvUAddress.text = etUAddress.text.toString()
+            tvUNumber.text = etUNumber.text.toString()
+            tvUEmail.text = etUEmail.text.toString()
+            tvUNic.text = etUNic.text.toString()
 
             alertDialog.dismiss()
 
@@ -148,16 +148,16 @@ class AdsDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun updateAdsData(
+    private fun updateUserData(
         id: String,
-        title: String,
-        desc: String,
-        mdate: String,
-        edate: String,
-        price: String
+        name: String,
+        address: String,
+        number: String,
+        email: String,
+        nic: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("AdsDB").child(id)
-        val adsInfo = AdsModel(id, title, desc, mdate, edate, price)
-        dbRef.setValue(adsInfo)
+        val dbRef = FirebaseDatabase.getInstance().getReference("UserDB").child(id)
+        val userInfo = AdsModel(id, name, address, number, email, nic )
+        dbRef.setValue(userInfo)
     }
 }

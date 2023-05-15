@@ -1,12 +1,12 @@
 package com.kotlin.mad.models
 
 data class AdsModel(
-    var pId: String? = null,
-    var pTitle: String? = null,
-    var pDesc: String? = null,
-    var pMdate: String? = null,
-    var pEdate: String? = null,
-    var pPrice: String? = null
+    var uId: String? = null,
+    var uName: String? = null,
+    var uAddress: String? = null,
+    var uNumber: String? = null,
+    var uEmail: String? = null,
+    var uNic: String? = null
     
 
 )

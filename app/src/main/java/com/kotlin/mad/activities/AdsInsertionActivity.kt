@@ -14,11 +14,11 @@ class AdsInsertionActivity : AppCompatActivity() {
 
 
 
-    private lateinit var etPTitle: EditText
-    private lateinit var etPDesc: EditText
-    private lateinit var etPMdate: EditText
-    private lateinit var etPEdate: EditText
-    private lateinit var etPPrice: EditText
+    private lateinit var etUName: EditText
+    private lateinit var etUAddress: EditText
+    private lateinit var etUNumber: EditText
+    private lateinit var etUEmail: EditText
+    private lateinit var etUNic: EditText
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -28,66 +28,66 @@ class AdsInsertionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ads_insertion)
 
-        etPTitle = findViewById(R.id.etPTitle)
-        etPDesc = findViewById(R.id.etPDesc)
-        etPMdate = findViewById(R.id.etPMdate)
-        etPEdate = findViewById(R.id.etPEdate)
-        etPPrice = findViewById(R.id.etPPrice)
+        etUName = findViewById(R.id.etUName)
+        etUAddress = findViewById(R.id.etUAddress)
+        etUNumber = findViewById(R.id.etUNumber)
+        etUEmail = findViewById(R.id.etUEmail)
+        etUNic = findViewById(R.id.etUNic)
         btnSaveData = findViewById(R.id.btnSave)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("AdsDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("UserDB")
 
         btnSaveData.setOnClickListener {
-            saveAdsData()
+            saveUserData()
         }
 
     }
 
-    private fun saveAdsData() {
+    private fun saveUserData() {
 
         //Geting Values
-        val pTitle = etPTitle.text.toString()
-        val pDesc = etPDesc.text.toString()
-        val pMdate = etPMdate.text.toString()
-        val pEdate = etPEdate.text.toString()
-        val pPrice = etPPrice.text.toString()
+        val uName = etUName.text.toString()
+        val uAddress = etUAddress.text.toString()
+        val uNumber = etUNumber.text.toString()
+        val uEmail = etUEmail.text.toString()
+        val uNic = etUNic.text.toString()
 
         //validation
-        if (pTitle.isEmpty() || pDesc.isEmpty() || pMdate.isEmpty() || pEdate.isEmpty() || pPrice.isEmpty()) {
+        if (uName.isEmpty() || uAddress.isEmpty() || uNumber.isEmpty() || uEmail.isEmpty() || uNic.isEmpty()) {
 
-            if (pTitle.isEmpty()) {
-                etPTitle.error = "Please enter Title"
+            if (uName.isEmpty()) {
+                etUName.error = "Please enter Title"
             }
-            if (pDesc.isEmpty()) {
-                etPDesc.error = "Please Description"
+            if (uAddress.isEmpty()) {
+                etUAddress.error = "Please Description"
             }
-            if (pMdate.isEmpty()) {
-                etPMdate.error = "Please Enter Manufacture Date"
+            if (uNumber.isEmpty()) {
+                etUNumber.error = "Please Enter Manufacture Date"
             }
-            if (pEdate.isEmpty()) {
-                etPEdate.error = "Please Enter Expire year month"
+            if (uEmail.isEmpty()) {
+                etUEmail.error = "Please Enter Expire year month"
             }
-            if (pEdate.isEmpty()) {
-                etPPrice.error = "Please Enter Price"
+            if (uEmail.isEmpty()) {
+                etUNic.error = "Please Enter Price"
             }
             Toast.makeText(this, "please check Some areas are not filled", Toast.LENGTH_LONG).show()
         } else {
 
             //genrate unique ID
-            val pId = dbRef.push().key!!
+            val uId = dbRef.push().key!!
 
-            val payment = AdsModel(pId, pTitle, pDesc, pMdate, pEdate, pPrice)
+            val payment = AdsModel(uId, uName, uAddress, uNumber, uEmail, uNic)
 
-            dbRef.child(pId).setValue(payment)
+            dbRef.child(uId).setValue(payment)
                 .addOnCompleteListener {
-                    Toast.makeText(this, "Details insert successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "User insert successfully", Toast.LENGTH_SHORT).show()
 
                     //clear data after insert
-                    etPTitle.text.clear()
-                    etPDesc.text.clear()
-                    etPMdate.text.clear()
-                    etPEdate.text.clear()
-                    etPPrice.text.clear()
+                    etUName.text.clear()
+                    etUAddress.text.clear()
+                    etUNumber.text.clear()
+                    etUEmail.text.clear()
+                    etUNic.text.clear()
 
 
                 }.addOnFailureListener { err ->
