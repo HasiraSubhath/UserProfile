@@ -7,29 +7,29 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kotlin.mad.adapters.AdsAdapter
-import com.kotlin.mad.models.AdsModel
+import com.kotlin.mad.adapters.UserAdapter
+import com.kotlin.mad.models.UserModel
 import com.kotlin.mad.R
 import com.google.firebase.database.*
 
-class AdsFetchingActivity : AppCompatActivity() {
+class UserFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var userList: ArrayList<AdsModel>
+    private lateinit var userList: ArrayList<UserModel>
     private lateinit var dbRef: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ads_fetching)
+        setContentView(R.layout.activity_user_fetching)
 
         empRecyclerView = findViewById(R.id.rvEmp)
         empRecyclerView.layoutManager = LinearLayoutManager(this)
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        userList = arrayListOf<AdsModel>()
+        userList = arrayListOf<UserModel>()
 
         getUserData()
 
@@ -48,16 +48,16 @@ class AdsFetchingActivity : AppCompatActivity() {
                userList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val paymentData = empSnap.getValue(AdsModel::class.java)
+                        val paymentData = empSnap.getValue(UserModel::class.java)
                         userList.add(paymentData!!)
                     }
-                    val mAdapter = AdsAdapter(userList)
+                    val mAdapter = UserAdapter(userList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : AdsAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : UserAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@AdsFetchingActivity, AdsDetailsActivity::class.java)
+                            val intent = Intent(this@UserFetchingActivity, UserDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
                             intent.putExtra("uId", userList[position].uId)

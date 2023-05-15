@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.mad.R
-import com.kotlin.mad.models.AdsModel
+import com.kotlin.mad.models.UserModel
 
-class AdsAdapter(private val userList: ArrayList<AdsModel>) :
-    RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
+class UserAdapter(private val userList: ArrayList<UserModel>) :
+    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -22,7 +22,7 @@ class AdsAdapter(private val userList: ArrayList<AdsModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.ads_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.user_list_item, parent, false)
         return ViewHolder(itemView, mListener)
     }
 

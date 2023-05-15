@@ -12,13 +12,13 @@
         android:theme="@style/Theme.Kotlin_payment"
         tools:targetApi="31">
         <activity
-            android:name=".activities.AdsDetailsActivity"
+            android:name=".activities.UserDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AdsFetchingActivity"
+            android:name=".activities.UserFetchingActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AdsInsertionActivity"
+            android:name=".activities.UserInsertionActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"

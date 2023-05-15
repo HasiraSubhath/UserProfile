@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.kotlin.mad.models.AdsModel
+import com.kotlin.mad.models.UserModel
 import com.kotlin.mad.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class AdsInsertionActivity : AppCompatActivity() {
+class UserInsertionActivity : AppCompatActivity() {
 
 
 
@@ -26,7 +26,7 @@ class AdsInsertionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ads_insertion)
+        setContentView(R.layout.activity_user_insertion)
 
         etUName = findViewById(R.id.etUName)
         etUAddress = findViewById(R.id.etUAddress)
@@ -76,7 +76,7 @@ class AdsInsertionActivity : AppCompatActivity() {
             //genrate unique ID
             val uId = dbRef.push().key!!
 
-            val payment = AdsModel(uId, uName, uAddress, uNumber, uEmail, uNic)
+            val payment = UserModel(uId, uName, uAddress, uNumber, uEmail, uNic)
 
             dbRef.child(uId).setValue(payment)
                 .addOnCompleteListener {

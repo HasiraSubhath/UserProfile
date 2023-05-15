@@ -1,6 +1,6 @@
 package com.kotlin.mad.models
 
-data class AdsModel(
+data class UserModel(
     var uId: String? = null,
     var uName: String? = null,
     var uAddress: String? = null,
