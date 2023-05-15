@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Title"
+        android:hint="Name"
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="textPersonName" />
 
@@ -20,8 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-
-        android:hint="Description"
+        android:hint="Address"
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="textPersonName"/>
 
@@ -31,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Manfactured Date"
+        android:hint="Phone Number"
 
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="date" />
@@ -42,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Expiration Date"
+        android:hint="E-mail"
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="date"
 
@@ -54,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Price"
+        android:hint="NIC"
         android:fontFamily="@font/tomorrow_medium"
         android:inputType="number"
 
@@ -67,7 +66,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/Darkgreen"
-        android:text="Update Advertisement details"
+        android:text="Update profile details"
         android:fontFamily="@font/tomorrow_medium"
         />
 
