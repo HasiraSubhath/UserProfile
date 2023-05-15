@@ -47,9 +47,9 @@
         android:layout_marginTop="28dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
-
+        android:maxLength="10"
         android:hint="Phone Number"
-        android:inputType="date"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
         android:hint="E-mail"
-        android:inputType="date"
+        android:inputType="textPersonName"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -94,7 +94,8 @@
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
         android:hint="NIC"
-        android:inputType="number"
+        android:inputType="textPersonName"
+        android:maxLength="12"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

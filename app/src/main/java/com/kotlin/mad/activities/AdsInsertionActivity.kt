@@ -56,19 +56,19 @@ class AdsInsertionActivity : AppCompatActivity() {
         if (uName.isEmpty() || uAddress.isEmpty() || uNumber.isEmpty() || uEmail.isEmpty() || uNic.isEmpty()) {
 
             if (uName.isEmpty()) {
-                etUName.error = "Please enter Title"
+                etUName.error = "Please enter Name"
             }
             if (uAddress.isEmpty()) {
-                etUAddress.error = "Please Description"
+                etUAddress.error = "Please Enter Address"
             }
             if (uNumber.isEmpty()) {
-                etUNumber.error = "Please Enter Manufacture Date"
+                etUNumber.error = "Please Enter Phone Number"
             }
             if (uEmail.isEmpty()) {
-                etUEmail.error = "Please Enter Expire year month"
+                etUEmail.error = "Please Enter Email"
             }
-            if (uEmail.isEmpty()) {
-                etUNic.error = "Please Enter Price"
+            if (uNic.isEmpty()) {
+                etUNic.error = "Please Enter NIC"
             }
             Toast.makeText(this, "please check Some areas are not filled", Toast.LENGTH_LONG).show()
         } else {
